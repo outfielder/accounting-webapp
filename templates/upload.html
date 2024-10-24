@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV Processor</title>
+</head>
+<body>
+    <h1>Upload CSV File</h1>
+    <p>Please upload a CSV file with the following columns in the exact order:</p>
+    <ul>
+        <li><strong>Order ID</strong></li>
+        <li><strong>Order Date</strong></li>
+        <li><strong>Invoice</strong></li>
+        <li><strong>Checkout Price</strong></li>
+        <li><strong>VAT Amount</strong></li>
+        <li><strong>Supplier</strong></li>
+        <li><strong>VAT == 1/6 Checkout Price</strong></li>
+    </ul>
+    <p>The columns must be present and in this order for the app to process the file correctly.</p>
+
+    <form method="POST" action="/upload" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".csv" required>
+        <input type="submit" value="Upload">
+    </form>
+</body>
+</html>
