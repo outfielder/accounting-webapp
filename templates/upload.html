@@ -20,6 +20,12 @@
     <p>The columns must be present and in this order for the app to process the file correctly.</p>
 
     <form method="POST" action="/upload" enctype="multipart/form-data">
+        <label for="date-format">Please select the Date Format of your input file:</label>
+        <select name="date_format" id="date-format" required>
+            <option value="dd/mm/yyyy">dd/mm/yyyy</option>
+            <option value="mm/dd/yyyy">mm/dd/yyyy</option>
+        </select>
+        <br><br>
         <input type="file" name="file" accept=".csv" required>
         <input type="submit" value="Upload">
     </form>
