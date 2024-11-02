@@ -6,8 +6,11 @@
     <title>CSV Processor</title>
 </head>
 <body>
-    <h1>Upload CSV File</h1>
-    <p>Please upload a CSV file with the following columns in the exact order:</p>
+    <h1>Upload CSV Files</h1>
+    <p>Please upload your CSV files in the following formats:</p>
+
+    <h2>Orders File Requirements</h2>
+    <p>The Orders file should contain the following columns in this exact order:</p>
     <ul>
         <li><strong>Order ID</strong></li>
         <li><strong>Order Date</strong></li>
@@ -17,7 +20,19 @@
         <li><strong>Supplier</strong></li>
         <li><strong>VAT == 1/6 Checkout Price</strong></li>
     </ul>
-    <p>The columns must be present and in this order for the app to process the file correctly.</p>
+
+    <h2>Cancellations File Requirements</h2>
+    <p>The Cancellations file should contain the following columns in this exact order:</p>
+    <ul>
+        <li><strong>Order (from Orderline)</strong> - Order ID associated with the cancellation</li>
+        <li><strong>Credit Note Number</strong> - Unique identifier for the credit note</li>
+        <li><strong>Cancellation/Refund Date</strong> - Date of the cancellation or refund</li>
+        <li><strong>Checkout Price (from Order) (from Orderline)</strong> - Original checkout price of the order</li>
+        <li><strong>VAT Amount (from Order) (from Orderline)</strong> - VAT amount of the cancelled order</li>
+        <li><strong>Supplier (from Order) (from Orderline)</strong> - Supplier associated with the cancellation</li>
+        <li><strong>Order fully cancelled (from Order) (from Orderline)</strong> - Indicates if the entire order was cancelled (1 for yes, 0 for no)</li>
+        <li><strong>VAT == 1/6 Checkout Price (from Order) (from Orderline)</strong> - Indicates if VAT is one-sixth of the checkout price</li>
+    </ul>
 
     <form method="POST" action="/upload" enctype="multipart/form-data">
         <label for="date-format">Please select the Date Format of your input file:</label>
@@ -26,7 +41,15 @@
             <option value="mm/dd/yyyy">mm/dd/yyyy</option>
         </select>
         <br><br>
-        <input type="file" name="file" accept=".csv" required>
+
+        <label>Upload Orders CSV:</label>
+        <input type="file" name="orders_file" accept=".csv" required>
+        <br><br>
+
+        <label>Upload Cancellations CSV (optional):</label>
+        <input type="file" name="cancellations_file" accept=".csv">
+        <br><br>
+
         <input type="submit" value="Upload">
     </form>
 </body>
